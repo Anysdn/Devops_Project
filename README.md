@@ -1,6 +1,5 @@
-Ce fichier décrit le projet dans ses grandes lignes et explique les différentes étapes à réaliser pour son installation.
+## PROJET_DevOps
 
-# Projet - Manipulation de séquences biologiques 
 Ce projet a été réalisé dans le cadre du module de développement opérationnel avancé (Master Bioinformatique 2024/2025).
 Il permet de manipuler des séquences d'ADN, ARN ou protéines à partir de fichiers de séquençage (FASTA ou FASTQ), avec un encodage binaire pour optimiser la mémoire et les performances.
 
