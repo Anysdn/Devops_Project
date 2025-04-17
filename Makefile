@@ -1,29 +1,30 @@
+# Nom de l'exécutable final
 EXEC = Devops
-# compilateur
-CXX = g++ 
-CXXFLAGS = -Wall -Wextra -std=c++17
 
-# Fichiers sources du projet
+# Compilateur
+CXX = g++
+CXXFLAGS = -Wall -Wextra -std=c++17 -Iinclude
+
+# Tous les fichiers sources .cpp
 SRC = main.cpp \
-      BioSequence.cpp \
-      BitSequence.cpp \
-      BioUtils.cpp \
-      FastaSequence.cpp \
-      FastqSequence.cpp \
-      KmerSearch.cpp   
+      src/BitSequence.cpp \
+      src/BioSequence.cpp \
+      src/BioUtils.cpp \
+      src/KmerSearch.cpp
 
-# transformation des fichiers cpp en .o (objets compilés)
+# Transformation des .cpp en .o
 OBJ = $(SRC:.cpp=.o)
 
+# Cible principale
 all: $(EXEC)
 
-# Règle pour créer l'exécutable à partir des fichiers objets
+# Construction de l'exécutable
 $(EXEC): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# Nettoyage des fichiers objets et de l'exécutable
+# Nettoyage des fichiers objets + exécutable
 clean:
-	rm -f *.o $(EXEC)
+	rm -f $(OBJ) $(EXEC)
 
-# Recompiler à partir de zéro
+# Recompiler entièrement
 re: clean all

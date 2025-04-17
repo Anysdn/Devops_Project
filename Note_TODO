@@ -1,0 +1,22 @@
+
+#Ce qui est déja fait: 
+  Creation des classes principales.
+  Génération automatique de kmers encodés
+  Recherche excate d'occurences
+  Encodage en 2 bits/base avec BitSequence
+
+
+#Fonctionnalités codées
+
+  Lecture de fichiers FASTA et FASTQ
+  Encodage binaire d’une séquence
+  Calcul du reverse complement
+  Fonction findOccurrences() avec struct KmerHit
+  
+
+
+#Ce que je dois ajouter :
+  La fonction qui retourne le kmer à la position i
+  une classe SuffixArray pour integrer la recherche dichotomique, puis prevoir une une recherche binaire(log(n)) 
+sur ce tableau de suff, pour integrer la recherche de motifs dans un grand genome (n>10^9)
+
