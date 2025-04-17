@@ -1,0 +1,46 @@
+\doxysection{Bio\+Utils.\+hpp}
+\hypertarget{BioUtils_8hpp_source}{}\label{BioUtils_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BIOUTILS\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BIOUTILS\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{enum}\ errorMods\ \{\ ignore,\ display,\ raise\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ displayInvalidArgument(errorMods\ mode,\ \textcolor{keyword}{const}\ std::string\&\ message,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ file\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ func\ =\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ ignore)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00029\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[InvalidArgument]\ "{}}\ <<\ message;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.empty())\ std::cerr\ <<\ \textcolor{stringliteral}{"{}\ |\ File:\ "{}}\ <<\ file;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (!func.empty())\ std::cerr\ <<\ \textcolor{stringliteral}{"{}\ |\ Function:\ "{}}\ <<\ func;}
+\DoxyCodeLine{00032\ \ \ \ \ std::cerr\ <<\ std::endl;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ raise)\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(message);}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ displayLengthError(errorMods\ mode,\ \textcolor{keyword}{const}\ std::string\&\ message,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ file\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ func\ =\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ ignore)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00048\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[LengthError]\ "{}}\ <<\ message;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.empty())\ std::cerr\ <<\ \textcolor{stringliteral}{"{}\ |\ File:\ "{}}\ <<\ file;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (!func.empty())\ std::cerr\ <<\ \textcolor{stringliteral}{"{}\ |\ Function:\ "{}}\ <<\ func;}
+\DoxyCodeLine{00051\ \ \ \ \ std::cerr\ <<\ std::endl;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ raise)\ \textcolor{keywordflow}{throw}\ std::length\_error(message);}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ displayDomainError(errorMods\ mode,\ \textcolor{keyword}{const}\ std::string\&\ message,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ file\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\&\ func\ =\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ ignore)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00067\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[DomainError]\ "{}}\ <<\ message;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.empty())\ std::cerr\ <<\ \textcolor{stringliteral}{"{}\ |\ File:\ "{}}\ <<\ file;}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{if}\ (!func.empty())\ std::cerr\ <<\ \textcolor{stringliteral}{"{}\ |\ Function:\ "{}}\ <<\ func;}
+\DoxyCodeLine{00070\ \ \ \ \ std::cerr\ <<\ std::endl;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ raise)\ \textcolor{keywordflow}{throw}\ std::domain\_error(message);}
+\DoxyCodeLine{00072\ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BIOUTILS\_HPP}}
+
+\end{DoxyCode}

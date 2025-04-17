@@ -2,4 +2,39 @@
 \hypertarget{md_README}{}\label{md_README}\index{README@{README}}
 Ce fichier décrit le projet dans ses grandes lignes et explique les différentes étapes à réaliser pour son installation.
 
-\#\+Description du Projet 
+\#\+Description du Projet Ce projet a pour objectif de manipuler des séquences biologiques (ADN, ARN, protéines) à partir de fichiers de type FASTA ou FASTQ. Il permet de lire, stocker, valider et encoder les séquences sous forme binaire afin d\textquotesingle{}optimiser la mémoire et les performances.
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md1}{}\doxysubsection{\texorpdfstring{Contenu du projet}{Contenu du projet}}\label{md_README_autotoc_md1}
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{classFastaSequence}{Fasta\+Sequence}} \+: lecture et extraction de séquences à partir de fichiers FASTA.
+\item {\ttfamily \doxylink{classFastqSequence}{Fastq\+Sequence}} \+: lecture des séquences et des scores de qualité à partir de fichiers FASTQ.
+\item {\ttfamily \doxylink{classBioSequence}{Bio\+Sequence}} \+: classe principale pour représenter une séquence encodée, avec support des symboles IUPAC.
+\item {\ttfamily \doxylink{classBitSequence}{Bit\+Sequence}} \+: structure bas niveau pour représenter les séquences encodées bit par bit.
+\item {\ttfamily Bio\+Utils} \+: outils utilitaires pour la gestion des erreurs et la validation.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md3}{}\doxysubsection{\texorpdfstring{Fonctionnalités principales}{Fonctionnalités principales}}\label{md_README_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Lecture de fichiers FASTA et FASTQ
+\item Encodage binaire des séquences (2 bits/base pour l\textquotesingle{}ADN par exemple)
+\item Support des symboles IUPAC (modes basic, most, all)
+\item Insertion et suppression de fragments dans une séquence
+\item Itérateurs pour parcourir une séquence
+\item Gestion des erreurs (ignore, afficher, ou exception)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md5}{}\doxysubsection{\texorpdfstring{Exemple d\textquotesingle{}utilisation}{Exemple d'utilisation}}\label{md_README_autotoc_md5}
+\`{}\`{}\`{}cpp \#include "{}\+Fasta\+Sequence.\+hpp"{} \#include "{}\+Bio\+Sequence.\+hpp"{}
+
+int main() \{ \doxylink{classFastaSequence}{Fasta\+Sequence} fasta("{}exemple.\+fasta"{}); std\+::string seq = fasta.\+get\+Sequence();
+
+\doxylink{classBioSequence}{Bio\+Sequence} bio(seq, \textquotesingle{}D\textquotesingle{}); // Séquence d\textquotesingle{}ADN, mode par défaut
+
+for (char base \+: bio) \{ std\+::cout \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} base; \}
+
+return 0; \} 

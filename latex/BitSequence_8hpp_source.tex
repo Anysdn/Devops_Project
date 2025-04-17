@@ -1,0 +1,79 @@
+\doxysection{Bit\+Sequence.\+hpp}
+\hypertarget{BitSequence_8hpp_source}{}\label{BitSequence_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BITSEQUENCE\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BITSEQUENCE\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cstdarg>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}BioUtils.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBitSequence}{BitSequence}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{char}*\ \_data\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \_data\_size\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \_element\_number\ =\ 0;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ \_element\_size\ =\ 0;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \_killInternalData();\textcolor{comment}{//\ permet\ de\ nettoyer\ et\ de\ liberer\ data\ correctement}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBitSequence_1_1Iterator}{Iterator}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBitSequence}{BitSequence}}\&\ \_parent;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \_index;\ \textcolor{comment}{//\ index\ de\ l'élément\ courant}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBitSequence_1_1Iterator}{Iterator}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitSequence}{BitSequence}}\&\ parent,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ operator*()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extraction\ de\ l’élément\ courant}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBitSequence_1_1Iterator}{Iterator}}\&\ operator++();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pré-\/incrément}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitSequence_1_1Iterator}{Iterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getIndex()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \ \ \ \ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ Constructeurs\ et\ destructeurs}}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classBitSequence}{BitSequence}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ block\_size,\ \textcolor{keywordtype}{size\_t}\ alloc);}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classBitSequence}{BitSequence}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ block\_size)\ :\ \mbox{\hyperlink{classBitSequence}{BitSequence}}(block\_size,\ 2)\ \{\}}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classBitSequence}{BitSequence}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitSequence}{BitSequence}}\&\ other);}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classBitSequence}{\string~BitSequence}}();\textcolor{comment}{//\ destructeur\ }}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getDataSize()\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ taille\ memoire\ reelle\ en\ octet\ }}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getElementNumber()\ \textcolor{keyword}{const};\textcolor{comment}{//\ nbr\ d'element\ stockes\ }}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ getElementSize()\ \textcolor{keyword}{const};\textcolor{comment}{//\ nbr\ de\ bits\ par\ élément}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ currentElementCapacity()\ \textcolor{keyword}{const};\textcolor{comment}{//\ combien\ on\ peut\ stocker\ sans\ réallouer\ }}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Itérateurs\ (\ permet\ de\ parcourir\ les\ elements\ bit\ a\ bit\ )}}
+\DoxyCodeLine{00053\ \ \ \ \ Iterator\ begin()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00054\ \ \ \ \ Iterator\ end()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Modifications}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ setElementNumber(\textcolor{keywordtype}{size\_t}\ number);\ \textcolor{comment}{//\ fixe\ le\ nbr\ d'elements\ }}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ doubleSize();\textcolor{comment}{//\ redimensionne\ le\ tableau\ interne\ }}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ resize(\textcolor{keywordtype}{size\_t}\ element\_capacity);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ shrink();\textcolor{comment}{//\ reduit\ la\ memoire\ a\ 'essentiel}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ clear();\textcolor{comment}{//vide\ le\ bitsequence}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//Opérations\ sur\ les\ donnees\ }}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{char}*\ get(\textcolor{keywordtype}{size\_t}\ index)\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ lecture\ (\ renvoie\ un\ pointeur\ vers\ les\ bits\ correspondant\ a\ un\ element\ donné\ )}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{char}*\ operator[](\textcolor{keywordtype}{size\_t}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//ecriture\ de\ l'element\ a\ l'index\ donné\ }}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ set(\textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{char}*\ tab,\ \textcolor{keywordtype}{bool}\ restrictions\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ push\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ set(\textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{char}\ value,\ \textcolor{keywordtype}{bool}\ restrictions\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ push\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ append(\textcolor{keywordtype}{char}*\ tab);\ \textcolor{comment}{//\ ajout\ de\ nouveaux\ element\ a\ la\ fin\ }}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ append(\textcolor{keywordtype}{char}\ value);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ makeRoomForElement(\textcolor{keywordtype}{size\_t}\ element\_position,\ \textcolor{keywordtype}{size\_t}\ room\_required,\ \textcolor{keywordtype}{bool}\ erase\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//insertion\ de\ plsr\ elemnt\ a\ une\ position\ donnee\ }}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ insert(\textcolor{keywordtype}{size\_t}\ pos,\ \textcolor{keywordtype}{size\_t}\ number\_of\_elements,\ \textcolor{keywordtype}{char}*\ tab...);}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ insert(\textcolor{keywordtype}{size\_t}\ pos,\ \textcolor{keywordtype}{size\_t}\ number\_of\_elements,\ \textcolor{keywordtype}{char}\ c...);}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ remove(\textcolor{keywordtype}{size\_t}\ element\_position,\ \textcolor{keywordtype}{size\_t}\ number\_of\_element);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{operator}\ bool()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BITSEQUENCE\_HPP}}
+
+\end{DoxyCode}

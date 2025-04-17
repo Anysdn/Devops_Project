@@ -1,0 +1,44 @@
+\doxysection{Fasta\+Sequence.\+hpp}
+\hypertarget{FastaSequence_8hpp_source}{}\label{FastaSequence_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FASTASEQUENCE\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FASTASEQUENCE\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFastaSequence}{FastaSequence}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ std::string\ header;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ligne\ d'en-\/tête\ commençant\ par\ >\ du\ fichier\ fasta\ d'entree}}
+\DoxyCodeLine{00017\ \ \ \ \ std::string\ sequence;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Séquence\ biologique\ associée}}
+\DoxyCodeLine{00018\ \ \ \ \ std::map<size\_t,\ std::string>\ comments;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Commentaires,\ indexés\ par\ le\ numéro\ de\ la\ ligne\ dans\ le\ fichier}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ Constructeurs}}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classFastaSequence}{FastaSequence}}()\ =\ \textcolor{keywordflow}{default};\ \textcolor{comment}{//cree\ un\ objet\ vide\ }}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{classFastaSequence}{FastaSequence}}(\textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classFastaSequence}{FastaSequence}}(\textcolor{keyword}{const}\ std::string\&\ header,\ \textcolor{keyword}{const}\ std::string\&\ sequence);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Méthodes\ principales\ -\/-\/-\/}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classFastaSequence_ab0363b5c6bc1c51d17b1343e412ba2fd}{readFromFile}}(\textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<FastaSequence>\ \mbox{\hyperlink{classFastaSequence_ad1099f63b4ec71cfc19fded269f41ce2}{fromFile}}(\textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Accesseurs\ -\/-\/-\/}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ std::string\ \mbox{\hyperlink{classFastaSequence_ac37bac7f1e1955a86233b8a19ad486ea}{getHeader}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00054\ \ \ \ \ std::string\ \mbox{\hyperlink{classFastaSequence_af965641267b04636a78b0daf834ad243}{getSequence}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ \ \ \ \ std::map<size\_t,\ std::string>\ \mbox{\hyperlink{classFastaSequence_ac77a12d0782896da216b1bc3a56dab45}{getComments}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classFastaSequence_a46afdc795d95e7a3e507b681eae041db}{printSummary}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FASTASEQUENCE\_HPP}}
+
+\end{DoxyCode}

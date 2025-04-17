@@ -1,0 +1,5 @@
+<map id="BitSequence::Iterator" name="BitSequence::Iterator">
+<area shape="rect" id="Node000001" title="Classe itérateur pour parcourir les éléments du BitSequence." alt="" coords="5,93,164,119"/>
+<area shape="rect" id="Node000002" href="$classBitSequence.html" title="Classe permettant de manipuler efficacement des données encodées bit à bit dans un tableau de char." alt="" coords="33,5,136,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,45,87,93,82,93,82,45"/>
+</map>

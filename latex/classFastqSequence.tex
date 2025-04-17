@@ -1,0 +1,53 @@
+\doxysection{Fastq\+Sequence Class Reference}
+\hypertarget{classFastqSequence}{}\label{classFastqSequence}\index{FastqSequence@{FastqSequence}}
+
+
+Cette classe gère la lecture et l\textquotesingle{}analyse des fichiers FASTQ.  
+
+
+
+
+{\ttfamily \#include $<$Fastq\+Sequence.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classFastqSequence_ac2e1f1a988fadf437b9064abcee60ed4}\label{classFastqSequence_ac2e1f1a988fadf437b9064abcee60ed4} 
+{\bfseries Fastq\+Sequence} (const std\+::string \&filepath)
+\item 
+\Hypertarget{classFastqSequence_a87d6c7e96ce71897dfc13175f972c6ac}\label{classFastqSequence_a87d6c7e96ce71897dfc13175f972c6ac} 
+{\bfseries Fastq\+Sequence} (const std\+::string \&header, const std\+::string \&sequence, const std\+::string \&quality)
+\item 
+\Hypertarget{classFastqSequence_aa7f26ec82615a818d72dd2fbeb547711}\label{classFastqSequence_aa7f26ec82615a818d72dd2fbeb547711} 
+bool {\bfseries read\+From\+File} (const std\+::string \&filepath)
+\item 
+\Hypertarget{classFastqSequence_ae287a96d90f3b2220b7920f326585662}\label{classFastqSequence_ae287a96d90f3b2220b7920f326585662} 
+std\+::string {\bfseries get\+Header} () const
+\item 
+\Hypertarget{classFastqSequence_af47660573ff8afd310ed81aec4b50195}\label{classFastqSequence_af47660573ff8afd310ed81aec4b50195} 
+std\+::string {\bfseries get\+Sequence} () const
+\item 
+\Hypertarget{classFastqSequence_a499557ce51892611810db884c59daac9}\label{classFastqSequence_a499557ce51892611810db884c59daac9} 
+std\+::string {\bfseries get\+Quality} () const
+\item 
+\Hypertarget{classFastqSequence_a20b6e44978e8c8bc196baedc0141ddcc}\label{classFastqSequence_a20b6e44978e8c8bc196baedc0141ddcc} 
+void {\bfseries print} () const
+\item 
+\Hypertarget{classFastqSequence_aa77eb3fc0315bd1cfed8abd596282ef8}\label{classFastqSequence_aa77eb3fc0315bd1cfed8abd596282ef8} 
+void {\bfseries print\+Summary} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classFastqSequence_a2746dbbcbff230e2515abb0381640cce}\label{classFastqSequence_a2746dbbcbff230e2515abb0381640cce} 
+static std\+::vector$<$ \mbox{\hyperlink{classFastqSequence}{Fastq\+Sequence}} $>$ {\bfseries from\+File} (const std\+::string \&filepath)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cette classe gère la lecture et l\textquotesingle{}analyse des fichiers FASTQ. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Fastq\+Sequence.\+hpp\item 
+Fastq\+Sequence.\+cpp\end{DoxyCompactItemize}

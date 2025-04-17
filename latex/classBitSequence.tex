@@ -1,0 +1,106 @@
+\doxysection{Bit\+Sequence Class Reference}
+\hypertarget{classBitSequence}{}\label{classBitSequence}\index{BitSequence@{BitSequence}}
+
+
+Classe permettant de manipuler efficacement des données encodées bit à bit dans un tableau de char.  
+
+
+
+
+{\ttfamily \#include $<$Bit\+Sequence.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBitSequence_1_1Iterator}{Iterator}}
+\begin{DoxyCompactList}\small\item\em Classe itérateur pour parcourir les éléments du \doxylink{classBitSequence}{Bit\+Sequence}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBitSequence_ad21bd10fb5833e950851dd3d3eeb6bdb}\label{classBitSequence_ad21bd10fb5833e950851dd3d3eeb6bdb} 
+{\bfseries Bit\+Sequence} (unsigned short int block\+\_\+size, size\+\_\+t alloc)
+\item 
+\Hypertarget{classBitSequence_ac243225eca2e8c7265c77b94d16f272e}\label{classBitSequence_ac243225eca2e8c7265c77b94d16f272e} 
+{\bfseries Bit\+Sequence} (unsigned short int block\+\_\+size)
+\item 
+\Hypertarget{classBitSequence_afc0171e46db6fcd0d4b96b13278c6038}\label{classBitSequence_afc0171e46db6fcd0d4b96b13278c6038} 
+{\bfseries Bit\+Sequence} (const \mbox{\hyperlink{classBitSequence}{Bit\+Sequence}} \&other)
+\item 
+\Hypertarget{classBitSequence_a3056a4244e4878641e0ebbbb1c741922}\label{classBitSequence_a3056a4244e4878641e0ebbbb1c741922} 
+size\+\_\+t {\bfseries get\+Data\+Size} () const
+\item 
+\Hypertarget{classBitSequence_a647a000f2a7590209ffd2d0dccbdac40}\label{classBitSequence_a647a000f2a7590209ffd2d0dccbdac40} 
+size\+\_\+t {\bfseries get\+Element\+Number} () const
+\item 
+\Hypertarget{classBitSequence_a22f696dc1c73c8968edf75cf5ca28d32}\label{classBitSequence_a22f696dc1c73c8968edf75cf5ca28d32} 
+size\+\_\+t {\bfseries size} () const
+\item 
+\Hypertarget{classBitSequence_a3cb6a9c20dde4f424110332ae1f5d568}\label{classBitSequence_a3cb6a9c20dde4f424110332ae1f5d568} 
+unsigned short int {\bfseries get\+Element\+Size} () const
+\item 
+\Hypertarget{classBitSequence_ae7c6c76f72168ee23b6b8ac11f7bfd02}\label{classBitSequence_ae7c6c76f72168ee23b6b8ac11f7bfd02} 
+size\+\_\+t {\bfseries current\+Element\+Capacity} () const
+\item 
+\Hypertarget{classBitSequence_ade4f9fccca6481f66c4311b1bd3f4f37}\label{classBitSequence_ade4f9fccca6481f66c4311b1bd3f4f37} 
+\mbox{\hyperlink{classBitSequence_1_1Iterator}{Iterator}} {\bfseries begin} () const
+\item 
+\Hypertarget{classBitSequence_a6e676179c0b075cc1efd344af9cd073b}\label{classBitSequence_a6e676179c0b075cc1efd344af9cd073b} 
+\mbox{\hyperlink{classBitSequence_1_1Iterator}{Iterator}} {\bfseries end} () const
+\item 
+\Hypertarget{classBitSequence_a8d6b83ee6d40cadec05041c3a9f56c10}\label{classBitSequence_a8d6b83ee6d40cadec05041c3a9f56c10} 
+void {\bfseries set\+Element\+Number} (size\+\_\+t number)
+\item 
+\Hypertarget{classBitSequence_a465fcb5e0999bf58c9e7ddb20a598bd6}\label{classBitSequence_a465fcb5e0999bf58c9e7ddb20a598bd6} 
+void {\bfseries double\+Size} ()
+\item 
+\Hypertarget{classBitSequence_adf61744f794366b21b02ec5ec9005f8f}\label{classBitSequence_adf61744f794366b21b02ec5ec9005f8f} 
+void {\bfseries resize} (size\+\_\+t element\+\_\+capacity)
+\item 
+\Hypertarget{classBitSequence_a7b56d6ead42c16bc2d0b51e4eccc33ed}\label{classBitSequence_a7b56d6ead42c16bc2d0b51e4eccc33ed} 
+void {\bfseries shrink} ()
+\item 
+\Hypertarget{classBitSequence_aa794c0e176e3b08ba712c56477913fee}\label{classBitSequence_aa794c0e176e3b08ba712c56477913fee} 
+void {\bfseries clear} ()
+\item 
+\Hypertarget{classBitSequence_aa4af76c7683c51ef0f121bb5997e02d1}\label{classBitSequence_aa4af76c7683c51ef0f121bb5997e02d1} 
+char \texorpdfstring{$\ast$}{*} {\bfseries get} (size\+\_\+t index) const
+\item 
+\Hypertarget{classBitSequence_a69295f9f7b4d4a796cf491649a553fc9}\label{classBitSequence_a69295f9f7b4d4a796cf491649a553fc9} 
+char \texorpdfstring{$\ast$}{*} {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t index) const
+\item 
+\Hypertarget{classBitSequence_a032a0a6f83dbd80108e0d262f0baa92d}\label{classBitSequence_a032a0a6f83dbd80108e0d262f0baa92d} 
+void {\bfseries set} (size\+\_\+t index, char \texorpdfstring{$\ast$}{*}tab, bool restrictions=true, bool push=true)
+\item 
+\Hypertarget{classBitSequence_a13fb83ecfd0503ee0cf2243069beeff5}\label{classBitSequence_a13fb83ecfd0503ee0cf2243069beeff5} 
+void {\bfseries set} (size\+\_\+t index, char value, bool restrictions=true, bool push=true)
+\item 
+\Hypertarget{classBitSequence_a4652e7cc1321c6e1699a32cd1a62dde8}\label{classBitSequence_a4652e7cc1321c6e1699a32cd1a62dde8} 
+void {\bfseries append} (char \texorpdfstring{$\ast$}{*}tab)
+\item 
+\Hypertarget{classBitSequence_a2f190cebf0f1f1da3949d4b0f47c765f}\label{classBitSequence_a2f190cebf0f1f1da3949d4b0f47c765f} 
+void {\bfseries append} (char value)
+\item 
+\Hypertarget{classBitSequence_aa736c5a5ec0ad7f78ab11a6bb099038e}\label{classBitSequence_aa736c5a5ec0ad7f78ab11a6bb099038e} 
+void {\bfseries make\+Room\+For\+Element} (size\+\_\+t element\+\_\+position, size\+\_\+t room\+\_\+required, bool erase=true)
+\item 
+\Hypertarget{classBitSequence_a1bb62a48de7616a7bd5da9cbd681c0f0}\label{classBitSequence_a1bb62a48de7616a7bd5da9cbd681c0f0} 
+void {\bfseries insert} (size\+\_\+t pos, size\+\_\+t number\+\_\+of\+\_\+elements, char \texorpdfstring{$\ast$}{*}tab...)
+\item 
+\Hypertarget{classBitSequence_ae2536021f069ab833ca00d3b64d8cd7c}\label{classBitSequence_ae2536021f069ab833ca00d3b64d8cd7c} 
+void {\bfseries insert} (size\+\_\+t pos, size\+\_\+t number\+\_\+of\+\_\+elements, char c...)
+\item 
+\Hypertarget{classBitSequence_abec6b32ba8589c597e90edbace66d5e6}\label{classBitSequence_abec6b32ba8589c597e90edbace66d5e6} 
+void {\bfseries remove} (size\+\_\+t element\+\_\+position, size\+\_\+t number\+\_\+of\+\_\+element)
+\item 
+\Hypertarget{classBitSequence_a15345062b9f15e05fb72c6a426c22217}\label{classBitSequence_a15345062b9f15e05fb72c6a426c22217} 
+{\bfseries operator bool} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe permettant de manipuler efficacement des données encodées bit à bit dans un tableau de char. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Bit\+Sequence.\+hpp\item 
+Bit\+Sequence.\+cpp\end{DoxyCompactItemize}

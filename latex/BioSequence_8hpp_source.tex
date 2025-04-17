@@ -1,0 +1,108 @@
+\doxysection{Bio\+Sequence.\+hpp}
+\hypertarget{BioSequence_8hpp_source}{}\label{BioSequence_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BIOSEQUENCE\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BIOSEQUENCE\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}BitSequence.hpp"{}}\ \ \ \ \textcolor{comment}{//\ Pour\ la\ représentation\ binaire\ des\ séquences}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}BioUtils.hpp"{}}\ \ \ \ \ \ \ \textcolor{comment}{//\ Fonctions\ utilitaires\ (IUPAC,\ erreurs,\ etc.)}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBioSequence}{BioSequence}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{enum}\ IUPACMode\ \{\ basic\ =\ 0,\ most\ =\ 1,\ all\ =\ 2\ \};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{enum}\ SeqType\ \{\ UNKNOWN,\ DNA,\ RNA,\ PROTEIN,\ NUCLEIC\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBioSequence_1_1Symbol}{Symbol}}\ \{\ \textcolor{comment}{//\ represente\ un\ symbol\ IUPAC}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \_symbol;\ \ \ \ \ \ \ \textcolor{comment}{//\ le\ symbol\ iupac\ lui\ mm\ }}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::string\ \_replacement;\textcolor{comment}{//\ les\ bases\ possibles\ }}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ IUPACMode\ \_min\_mode;\textcolor{comment}{//\ le\ niveau\ IUPAC\ min\ requis\ pour\ l'accepter}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBioSequence_1_1Symbol}{Symbol}}(\textcolor{keywordtype}{char}\ symbol,\ \textcolor{keyword}{const}\ std::string\&\ replacement,\ IUPACMode\ mode);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ matches(\textcolor{keywordtype}{char}\ target,\ \textcolor{keywordtype}{bool}\ useReplacement\ =\ \textcolor{keyword}{true})\ \textcolor{keyword}{const};\ \textcolor{comment}{//verifie\ si\ ce\ symbole\ peut\ correspondre\ a\ un\ symbole\ donné\ }}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ usableIn(IUPACMode\ mode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ get(IUPACMode\ mode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ value()\ \textcolor{keyword}{const};\textcolor{comment}{//\ retourne\ la\ caract\ brut\ sans\ modif\ }}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ \textcolor{comment}{/*explication:\ }}
+\DoxyCodeLine{00033\ \textcolor{comment}{dans\ le\ mapping,\ on\ veux\ savoir\ si\ deux\ lettres\ sont\ compatibles.}}
+\DoxyCodeLine{00034\ \textcolor{comment}{Exemple\ :\ 'N'\ dans\ une\ séquence\ peut\ matcher\ 'A'\ }}
+\DoxyCodeLine{00035\ \textcolor{comment}{dans\ une\ autre,\ car\ 'N'\ =\ ACGT.*/}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classBitSequence}{BitSequence}}\ \_bitseq;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ attribut\ qui\ stock\ l'encodage\ binaire\ de\ la\ séquence}}
+\DoxyCodeLine{00040\ \ \ \ \ std::array<bool,\ 5>\ \_type\_flags;\ \ \ \ \ \ \ \textcolor{comment}{//\ Flags\ du\ type\ de\ séquence}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{char}\ \_declared\_type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 'D',\ 'R',\ 'P',\ 'N',\ 'U'}}
+\DoxyCodeLine{00042\ \ \ \ \ IUPACMode\ \_iupac;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Niveau\ IUPAC\ utilisé}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Dictionnaires\ d'IUPAC\ (\ liste\ les\ symboles\ autorisés\ pour\ chaque\ ty\ pe\ de\ seq)}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::map<char,\ Symbol>\ legalDNA;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::map<char,\ Symbol>\ legalRNA;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::map<char,\ Symbol>\ legalAA;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::set<char>\ allowedTypes;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Méthodes\ utilitaires\ internes}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ std::array<bool,\ 5>\ readDeclaredType(\textcolor{keywordtype}{char}\ type);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ readTypeArray(std::array<bool,\ 5>\ flags,\ \textcolor{keywordtype}{bool}\ safe\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ std::array<bool,\ 5>\ getSymbolFlags(\textcolor{keywordtype}{char}\ symbol);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ canBeDna(\textcolor{keywordtype}{char}\ type);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ canBeRna(\textcolor{keywordtype}{char}\ type);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ canBeAmino(\textcolor{keywordtype}{char}\ type);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ canBeNucleic(\textcolor{keywordtype}{char}\ type);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{char}\ parse(\textcolor{keywordtype}{char}\ symbol,\ errorMods\ mode);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBioSequence_1_1Symbol}{Symbol}}\&\ getSymbol(\textcolor{keywordtype}{char}\ symbol,\ \textcolor{keywordtype}{char}\ type)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ Constructeur\ principal}}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{classBioSequence}{BioSequence}}(\textcolor{keyword}{const}\ std::string\&\ sequence,\ \textcolor{keywordtype}{char}\ type\ =\ \textcolor{charliteral}{'U'},\ IUPACMode\ iupac\ =\ all,\ errorMods\ mod\ =\ ignore);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Méthodes\ de\ manipulation}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ insertFront(\textcolor{keyword}{const}\ std::string\&\ sequence,\ errorMods\ mod\ =\ ignore);}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ insertBack(\textcolor{keyword}{const}\ std::string\&\ sequence,\ errorMods\ mod\ =\ ignore);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ insert(\textcolor{keyword}{const}\ std::string\&\ sequence,\ \textcolor{keywordtype}{size\_t}\ pos,\ errorMods\ mod\ =\ ignore);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ erase(\textcolor{keywordtype}{size\_t}\ pos,\ \textcolor{keywordtype}{size\_t}\ len);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{char}\ get(\textcolor{keywordtype}{size\_t}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{char}\ getType()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ \ \ \ \ IUPACMode\ getIupac()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBitSequence}{BitSequence}}\&\ getBitSequence()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Itérateur\ personnalisé\ pour\ parcourir\ la\ séquence\ (\ comme\ les\ stl\ )}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBioSequence_1_1Iterator}{Iterator}}\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBioSequence}{BioSequence}}\&\ \_seq;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \_index;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBioSequence_1_1Iterator}{Iterator}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBioSequence}{BioSequence}}\&\ seq,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ operator*()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBioSequence_1_1Iterator}{Iterator}}\&\ operator++();}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBioSequence_1_1Iterator}{Iterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00089\ \ \ \ \ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{classBioSequence_1_1Iterator}{Iterator}}\ begin()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{classBioSequence_1_1Iterator}{Iterator}}\ end()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ operateurs\ de\ comparaison}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBioSequence}{BioSequence}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator>(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBioSequence}{BioSequence}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator<=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBioSequence}{BioSequence}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator>=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBioSequence}{BioSequence}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Vérifie\ si\ la\ séquence\ est\ vide}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{operator}\ bool()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BIOSEQUENCE\_HPP}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+
+\end{DoxyCode}

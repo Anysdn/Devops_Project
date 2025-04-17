@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Projet_Devops: README</title>
+<title>My Project: README</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Projet_Devops
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -73,7 +73,36 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Ce fichier décrit le projet dans ses grandes lignes et explique les différentes étapes à réaliser pour son installation.</p>
-<p>#Description du Projet </p>
+<p>#Description du Projet Ce projet a pour objectif de manipuler des séquences biologiques (ADN, ARN, protéines) à partir de fichiers de type FASTA ou FASTQ. Il permet de lire, stocker, valider et encoder les séquences sous forme binaire afin d'optimiser la mémoire et les performances.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md1"></a>
+Contenu du projet</h2>
+<ul>
+<li><code><a class="el" href="classFastaSequence.html" title="Cette classe permet de lire et stocker une séquence depuis un fichier FASTA. Elle extrait l&#39;en-tête,...">FastaSequence</a></code> : lecture et extraction de séquences à partir de fichiers FASTA.</li>
+<li><code><a class="el" href="classFastqSequence.html" title="Cette classe gère la lecture et l&#39;analyse des fichiers FASTQ.">FastqSequence</a></code> : lecture des séquences et des scores de qualité à partir de fichiers FASTQ.</li>
+<li><code><a class="el" href="classBioSequence.html" title="Classe principale qui gère les séquences biologiques (ADN, ARN, protéines)">BioSequence</a></code> : classe principale pour représenter une séquence encodée, avec support des symboles IUPAC.</li>
+<li><code><a class="el" href="classBitSequence.html" title="Classe permettant de manipuler efficacement des données encodées bit à bit dans un tableau de char.">BitSequence</a></code> : structure bas niveau pour représenter les séquences encodées bit par bit.</li>
+<li><code>BioUtils</code> : outils utilitaires pour la gestion des erreurs et la validation.</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md3"></a>
+Fonctionnalités principales</h2>
+<ul>
+<li>Lecture de fichiers FASTA et FASTQ</li>
+<li>Encodage binaire des séquences (2 bits/base pour l'ADN par exemple)</li>
+<li>Support des symboles IUPAC (modes basic, most, all)</li>
+<li>Insertion et suppression de fragments dans une séquence</li>
+<li>Itérateurs pour parcourir une séquence</li>
+<li>Gestion des erreurs (ignore, afficher, ou exception)</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md5"></a>
+Exemple d'utilisation</h2>
+<p>```cpp #include "FastaSequence.hpp" #include "BioSequence.hpp"</p>
+<p>int main() { <a class="el" href="classFastaSequence.html" title="Cette classe permet de lire et stocker une séquence depuis un fichier FASTA. Elle extrait l&#39;en-tête,...">FastaSequence</a> fasta("exemple.fasta"); std::string seq = fasta.getSequence();</p>
+<p><a class="el" href="classBioSequence.html" title="Classe principale qui gère les séquences biologiques (ADN, ARN, protéines)">BioSequence</a> bio(seq, 'D'); // Séquence d'ADN, mode par défaut</p>
+<p>for (char base : bio) { std::cout &lt;&lt; base; }</p>
+<p>return 0; } </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

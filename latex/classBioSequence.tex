@@ -1,0 +1,100 @@
+\doxysection{Bio\+Sequence Class Reference}
+\hypertarget{classBioSequence}{}\label{classBioSequence}\index{BioSequence@{BioSequence}}
+
+
+Classe principale qui gère les séquences biologiques (ADN, ARN, protéines)  
+
+
+
+
+{\ttfamily \#include $<$Bio\+Sequence.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBioSequence_1_1Iterator}{Iterator}}
+\item 
+class \mbox{\hyperlink{classBioSequence_1_1Symbol}{Symbol}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBioSequence_a1abbfc40fda4a6616f92751234f938c9}\label{classBioSequence_a1abbfc40fda4a6616f92751234f938c9} 
+enum {\bfseries IUPACMode} \{ {\bfseries basic} = 0
+, {\bfseries most} = 1
+, {\bfseries all} = 2
+ \}
+\item 
+\Hypertarget{classBioSequence_a610b30efa23072d62c69023c40d66279}\label{classBioSequence_a610b30efa23072d62c69023c40d66279} 
+enum {\bfseries Seq\+Type} \{ \newline
+{\bfseries UNKNOWN}
+, {\bfseries DNA}
+, {\bfseries RNA}
+, {\bfseries PROTEIN}
+, \newline
+{\bfseries NUCLEIC}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBioSequence_a811f42e2914444ab3f22735aba0ae9fd}\label{classBioSequence_a811f42e2914444ab3f22735aba0ae9fd} 
+{\bfseries Bio\+Sequence} (const std\+::string \&sequence, char type=\textquotesingle{}U\textquotesingle{}, IUPACMode iupac=all, error\+Mods mod=ignore)
+\item 
+\Hypertarget{classBioSequence_a60d7f932655e95161b05f04929234845}\label{classBioSequence_a60d7f932655e95161b05f04929234845} 
+void {\bfseries insert\+Front} (const std\+::string \&sequence, error\+Mods mod=ignore)
+\item 
+\Hypertarget{classBioSequence_a8cb87a42c3f6681d6fd9c2e089191970}\label{classBioSequence_a8cb87a42c3f6681d6fd9c2e089191970} 
+void {\bfseries insert\+Back} (const std\+::string \&sequence, error\+Mods mod=ignore)
+\item 
+\Hypertarget{classBioSequence_a15555f49b2df1561f2ecc4ba893c587f}\label{classBioSequence_a15555f49b2df1561f2ecc4ba893c587f} 
+void {\bfseries insert} (const std\+::string \&sequence, size\+\_\+t pos, error\+Mods mod=ignore)
+\item 
+\Hypertarget{classBioSequence_ab2c930b1e744e039196db26493a93f08}\label{classBioSequence_ab2c930b1e744e039196db26493a93f08} 
+void {\bfseries erase} (size\+\_\+t pos, size\+\_\+t len)
+\item 
+\Hypertarget{classBioSequence_aa0b805bc4d2daa31228ca91712785b29}\label{classBioSequence_aa0b805bc4d2daa31228ca91712785b29} 
+size\+\_\+t {\bfseries size} () const
+\item 
+\Hypertarget{classBioSequence_adb8bd4c9372e4a59106aa71bb9398fad}\label{classBioSequence_adb8bd4c9372e4a59106aa71bb9398fad} 
+char {\bfseries get} (size\+\_\+t index) const
+\item 
+\Hypertarget{classBioSequence_a018832edbd002237e7bdc384f41cbafe}\label{classBioSequence_a018832edbd002237e7bdc384f41cbafe} 
+char {\bfseries get\+Type} () const
+\item 
+\Hypertarget{classBioSequence_a136955209ccb789e3813896148e3e6d9}\label{classBioSequence_a136955209ccb789e3813896148e3e6d9} 
+IUPACMode {\bfseries get\+Iupac} () const
+\item 
+\Hypertarget{classBioSequence_a0e46adc148ada33bf1b7ca56bdbef537}\label{classBioSequence_a0e46adc148ada33bf1b7ca56bdbef537} 
+const \mbox{\hyperlink{classBitSequence}{Bit\+Sequence}} \& {\bfseries get\+Bit\+Sequence} () const
+\item 
+\Hypertarget{classBioSequence_abbb444777518a96f7c0c9f4e31317c49}\label{classBioSequence_abbb444777518a96f7c0c9f4e31317c49} 
+\mbox{\hyperlink{classBioSequence_1_1Iterator}{Iterator}} {\bfseries begin} () const
+\item 
+\Hypertarget{classBioSequence_a5081feb5972a42a42f06ac669299d06b}\label{classBioSequence_a5081feb5972a42a42f06ac669299d06b} 
+\mbox{\hyperlink{classBioSequence_1_1Iterator}{Iterator}} {\bfseries end} () const
+\item 
+\Hypertarget{classBioSequence_a52f6488a6ef1d797b3a828e4bf7be4a1}\label{classBioSequence_a52f6488a6ef1d797b3a828e4bf7be4a1} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{classBioSequence}{Bio\+Sequence}} \&other) const
+\item 
+\Hypertarget{classBioSequence_ae190b971759652f8c9f80fe3aaef373c}\label{classBioSequence_ae190b971759652f8c9f80fe3aaef373c} 
+bool {\bfseries operator$>$} (const \mbox{\hyperlink{classBioSequence}{Bio\+Sequence}} \&other) const
+\item 
+\Hypertarget{classBioSequence_a4a20ef7b52719c3b0da3f590418b6fa3}\label{classBioSequence_a4a20ef7b52719c3b0da3f590418b6fa3} 
+bool {\bfseries operator$<$=} (const \mbox{\hyperlink{classBioSequence}{Bio\+Sequence}} \&other) const
+\item 
+\Hypertarget{classBioSequence_a39b6dfb7d5200bbefd6cf4de27be4d9f}\label{classBioSequence_a39b6dfb7d5200bbefd6cf4de27be4d9f} 
+bool {\bfseries operator$>$=} (const \mbox{\hyperlink{classBioSequence}{Bio\+Sequence}} \&other) const
+\item 
+\Hypertarget{classBioSequence_a22dae429146893fddb13331003903d5f}\label{classBioSequence_a22dae429146893fddb13331003903d5f} 
+{\bfseries operator bool} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe principale qui gère les séquences biologiques (ADN, ARN, protéines) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Bio\+Sequence.\+hpp\item 
+Bio\+Sequence.\+cpp\end{DoxyCompactItemize}

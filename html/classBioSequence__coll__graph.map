@@ -1,0 +1,5 @@
+<map id="BioSequence" name="BioSequence">
+<area shape="rect" id="Node000001" title="Classe principale qui gère les séquences biologiques (ADN, ARN, protéines)" alt="" coords="5,93,112,119"/>
+<area shape="rect" id="Node000002" href="$classBitSequence.html" title="Classe permettant de manipuler efficacement des données encodées bit à bit dans un tableau de char." alt="" coords="7,5,110,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,45,61,93,56,93,56,45"/>
+</map>

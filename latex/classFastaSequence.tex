@@ -1,0 +1,128 @@
+\doxysection{Fasta\+Sequence Class Reference}
+\hypertarget{classFastaSequence}{}\label{classFastaSequence}\index{FastaSequence@{FastaSequence}}
+
+
+Cette classe permet de lire et stocker une séquence depuis un fichier FASTA. Elle extrait l\textquotesingle{}en-\/tête, la séquence et les commentaires éventuels.  
+
+
+
+
+{\ttfamily \#include $<$Fasta\+Sequence.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFastaSequence_addae348f09fac89be780680439ffc1cb}{Fasta\+Sequence}} (const std\+::string \&filepath)
+\begin{DoxyCompactList}\small\item\em Constructeur à partir d’un fichier FASTA (lecture automatique) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFastaSequence_aac2c858da2dbd754f35e9f38b16e8edd}{Fasta\+Sequence}} (const std\+::string \&header, const std\+::string \&sequence)
+\begin{DoxyCompactList}\small\item\em Constructeur (manuel) à partir de l\textquotesingle{}en-\/tête et de la séquence. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFastaSequence_ab0363b5c6bc1c51d17b1343e412ba2fd}{read\+From\+File}} (const std\+::string \&filepath)
+\begin{DoxyCompactList}\small\item\em Lecture du fichier FASTA (1 seule séquence) \end{DoxyCompactList}\item 
+\Hypertarget{classFastaSequence_ac37bac7f1e1955a86233b8a19ad486ea}\label{classFastaSequence_ac37bac7f1e1955a86233b8a19ad486ea} 
+std\+::string {\bfseries get\+Header} () const
+\begin{DoxyCompactList}\small\item\em Accesseur \+: retourne l’en-\/tête de la séquence. \end{DoxyCompactList}\item 
+\Hypertarget{classFastaSequence_af965641267b04636a78b0daf834ad243}\label{classFastaSequence_af965641267b04636a78b0daf834ad243} 
+std\+::string {\bfseries get\+Sequence} () const
+\begin{DoxyCompactList}\small\item\em Accesseur \+: retourne la séquence lue. \end{DoxyCompactList}\item 
+\Hypertarget{classFastaSequence_ac77a12d0782896da216b1bc3a56dab45}\label{classFastaSequence_ac77a12d0782896da216b1bc3a56dab45} 
+std\+::map$<$ size\+\_\+t, std\+::string $>$ {\bfseries get\+Comments} () const
+\begin{DoxyCompactList}\small\item\em Accesseur \+: retourne la map des commentaires. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFastaSequence_a46afdc795d95e7a3e507b681eae041db}{print\+Summary}} () const
+\begin{DoxyCompactList}\small\item\em Affiche un résumé de la séquence (header, taille, nbr de commentaires) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{classFastaSequence}{Fasta\+Sequence}} $>$ \mbox{\hyperlink{classFastaSequence_ad1099f63b4ec71cfc19fded269f41ce2}{from\+File}} (const std\+::string \&filepath)
+\begin{DoxyCompactList}\small\item\em Lecture de plusieurs séquences FASTA dans un fichier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cette classe permet de lire et stocker une séquence depuis un fichier FASTA. Elle extrait l\textquotesingle{}en-\/tête, la séquence et les commentaires éventuels. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classFastaSequence_addae348f09fac89be780680439ffc1cb}\label{classFastaSequence_addae348f09fac89be780680439ffc1cb} 
+\index{FastaSequence@{FastaSequence}!FastaSequence@{FastaSequence}}
+\index{FastaSequence@{FastaSequence}!FastaSequence@{FastaSequence}}
+\doxysubsubsection{\texorpdfstring{FastaSequence()}{FastaSequence()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Fasta\+Sequence\+::\+Fasta\+Sequence (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Constructeur à partir d’un fichier FASTA (lecture automatique) 
+
+Constructeur depuis un fichier FASTA \+: appelle automatiquement la fonction \doxylink{classFastaSequence_ab0363b5c6bc1c51d17b1343e412ba2fd}{read\+From\+File()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Chemin vers le fichier FASTA \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classFastaSequence_aac2c858da2dbd754f35e9f38b16e8edd}\label{classFastaSequence_aac2c858da2dbd754f35e9f38b16e8edd} 
+\index{FastaSequence@{FastaSequence}!FastaSequence@{FastaSequence}}
+\index{FastaSequence@{FastaSequence}!FastaSequence@{FastaSequence}}
+\doxysubsubsection{\texorpdfstring{FastaSequence()}{FastaSequence()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Fasta\+Sequence\+::\+Fasta\+Sequence (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{header,  }\item[{const std\+::string \&}]{sequence }\end{DoxyParamCaption})}
+
+
+
+Constructeur (manuel) à partir de l\textquotesingle{}en-\/tête et de la séquence. 
+
+Constructeur manuel depuis header + séquence. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classFastaSequence_ad1099f63b4ec71cfc19fded269f41ce2}\label{classFastaSequence_ad1099f63b4ec71cfc19fded269f41ce2} 
+\index{FastaSequence@{FastaSequence}!fromFile@{fromFile}}
+\index{fromFile@{fromFile}!FastaSequence@{FastaSequence}}
+\doxysubsubsection{\texorpdfstring{fromFile()}{fromFile()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classFastaSequence}{Fasta\+Sequence}} $>$ Fasta\+Sequence\+::from\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Lecture de plusieurs séquences FASTA dans un fichier. 
+
+Lecture de plusieurs séquences FASTA depuis un fichier Chaque séquence commence par un \textquotesingle{}\texorpdfstring{$>$}{>}\textquotesingle{} suivi de lignes de séquence.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Chemin du fichier FASTA \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vecteur d’objets \doxylink{classFastaSequence}{Fasta\+Sequence} 
+\end{DoxyReturn}
+\Hypertarget{classFastaSequence_a46afdc795d95e7a3e507b681eae041db}\label{classFastaSequence_a46afdc795d95e7a3e507b681eae041db} 
+\index{FastaSequence@{FastaSequence}!printSummary@{printSummary}}
+\index{printSummary@{printSummary}!FastaSequence@{FastaSequence}}
+\doxysubsubsection{\texorpdfstring{printSummary()}{printSummary()}}
+{\footnotesize\ttfamily void Fasta\+Sequence\+::print\+Summary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Affiche un résumé de la séquence (header, taille, nbr de commentaires) 
+
+Affiche un résumé rapide de la séquence. \Hypertarget{classFastaSequence_ab0363b5c6bc1c51d17b1343e412ba2fd}\label{classFastaSequence_ab0363b5c6bc1c51d17b1343e412ba2fd} 
+\index{FastaSequence@{FastaSequence}!readFromFile@{readFromFile}}
+\index{readFromFile@{readFromFile}!FastaSequence@{FastaSequence}}
+\doxysubsubsection{\texorpdfstring{readFromFile()}{readFromFile()}}
+{\footnotesize\ttfamily bool Fasta\+Sequence\+::read\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Lecture du fichier FASTA (1 seule séquence) 
+
+Lecture d’un fichier FASTA ligne par ligne (version simple, une seule séquence)
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Chemin vers le fichier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si lecture réussie, false sinon 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Fasta\+Sequence.\+hpp\item 
+Fasta\+Sequence.\+cpp\end{DoxyCompactItemize}
